@@ -1,28 +1,47 @@
-public class Codigo5 {
+// FIXED: Importar Scanner para entrada de datos
+import java.util.Scanner;
 
-    Scanner s = new Scanner();
-	    System.out.print("Introduzca un número: ');
-    String ni = s.nextLine();
-    int c = ni;
+public class Main {
+    public static void main(String[] args) {
 
-    int afo = 0;
-    int noAfo = 0;
+        // FIXED: Crear Scanner con System.in
+        Scanner s = new Scanner(System.in);
 
-	    while (ni > 0) {
-        int digito = (int)(ni % 10);
-        if ((digito == 3) || (digito == 7) || (digito == 8) || (digito == 9)) {
-            afo++;
-        } else {
-            noAfo++;
+        // FIXED: Corregir comillas
+        System.out.print("Introduzca un número: ");
 
+        // FIXED: Leer número como entero
+        int ni = s.nextInt();
+
+        // FIXED: Guardar copia del valor original para mostrarlo al final
+        int c = ni;
+
+        int afo = 0;
+        int noAfo = 0;
+
+        while (ni > 0) {
+            // FIXED: Obtener último dígito
+            int digito = ni % 10;
+
+            // FIXED: Contar dígitos afortunados
+            if (digito == 3 || digito == 7 || digito == 8 || digito == 9) {
+                afo++;
+            } else {
+                noAfo++;
+            }
+
+            // FIXED: Eliminar el último dígito
             ni /= 10;
         }
+
+        // FIXED: Mostrar mensaje correcto según el conteo
         if (afo > noAfo) {
-            System.out.prinln("El " + c + " es un número afortunado.");
+            System.out.println("El " + c + " es un número afortunado.");
         } else {
             System.out.println("El " + c + " no es un número afortunado.");
         }
 
+        // FIXED: Cerrar el Scanner
+        s.close();
     }
-
 }
